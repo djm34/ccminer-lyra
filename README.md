@@ -1,15 +1,16 @@
-ccminer
-=======
+ccminer lyra2re edition
+=======================
 
 Based on Christian Buchner's &amp; Christian H.'s CUDA project
 based on the Fork by tpruvot@github with X14,X15,X17,WHIRL,Blake256 and LYRA2 support , and some others, check the [README.txt](README.txt)
-Reforked and optimized by sp-hash@github and KlausT@github 
+Based on sp-hash@github and KlausT@github fork
 
-SP-HASH: BTC donation address: 1CTiNJyoUmbdMRACtteRWXhGqtSETYd6Vd
+djm34: BTC donation address: 
+1NENYmxwZGHsKFmyjTc5WferTn5VTFb7Ze
 
 A part of the recent algos were originally wrote by [djm34](https://github.com/djm34).
 
-This variant was tested and built on Linux (ubuntu server 14.04) and VStudio 2013 on Windows 7.
+This variant was tested and built on Linux (ubuntu server 14.04) and VStudio 2013 on Windows 8.1
 
 Note that the x86 releases are generally faster than x64 ones on Windows.
 
