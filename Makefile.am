@@ -70,10 +70,6 @@ ccminer_SOURCES += scrypt.cpp scrypt-jane.cpp \
     scrypt/nv_kernel.cu scrypt/nv_kernel2.cu scrypt/titan_kernel.cu
 
 			  
-if HAVE_NVML
-nvml_defs = -DUSE_WRAPNVML
-nvml_libs = -ldl
-endif
 
 if HAVE_WINDOWS
 ccminer_SOURCES += compat/winansi.c
