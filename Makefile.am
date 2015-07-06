@@ -70,6 +70,10 @@ ccminer_SOURCES += scrypt.cpp scrypt-jane.cpp \
     scrypt/nv_kernel.cu scrypt/nv_kernel2.cu scrypt/titan_kernel.cu
 
 			  
+if HAVE_NVML
+nvml_defs = -DUSE_WRAPNVML
+nvml_libs = -ldl
+endif
 
 if HAVE_WINDOWS
 ccminer_SOURCES += compat/winansi.c
@@ -81,7 +85,7 @@ ccminer_CPPFLAGS = @LIBCURL_CPPFLAGS@ @OPENMP_CFLAGS@ $(CPPFLAGS) $(PTHREAD_FLAG
 
 nvcc_ARCH = -gencode=arch=compute_52,code=\"sm_52,compute_52\"
 nvcc_ARCH  += -gencode=arch=compute_50,code=\"sm_50,compute_50\"
-#nvcc_ARCH += -gencode=arch=compute_35,code=\"sm_35,compute_35\"
+nvcc_ARCH += -gencode=arch=compute_35,code=\"sm_35,compute_35\"
 #nvcc_ARCH += -gencode=arch=compute_30,code=\"sm_30,compute_30\"
 
 nvcc_FLAGS = $(nvcc_ARCH) @CUDA_INCLUDES@ -I. @CUDA_CFLAGS@
@@ -131,4 +135,3 @@ scrypt/salsa_kernel.o: scrypt/salsa_kernel.cu
 	
 skein.o: skein.cu
 	$(NVCC) $(nvcc_FLAGS) --maxrregcount=64 -o $@ -c $<
-

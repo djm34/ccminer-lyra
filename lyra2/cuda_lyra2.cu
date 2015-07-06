@@ -34,7 +34,7 @@ static __device__ __forceinline__ void Gfunc_v35(uint2 & a, uint2 &b, uint2 &c, 
 
 }
 
-static __device__ __forceinline__ void Gfunc_v35(uint64_t & a, uint64_t &b, uint64_t &c, uint64_t &d)
+static __device__ __forceinline__ void Gfunc_v35(unsigned long long & a, unsigned long long &b, unsigned long long &c, unsigned long long &d)
 {
 
 	a += b; d ^= a; d = ROTR64(d, 32);
@@ -476,20 +476,28 @@ void lyra2_gpu_hash_32_v3(uint32_t threads, uint32_t startNounce, uint2 *outputH
 
 
 	uint28 blake2b_IV[2];
+#if __CUDA_ARCH__ > 350
+	const uint28 blake2b_IV[2] = {
+		{ { 0xf3bcc908, 0x6a09e667 },
+		{ 0x84caa73b, 0xbb67ae85 },
+		{ 0xfe94f82b, 0x3c6ef372 },
+		{ 0x5f1d36f1, 0xa54ff53a } },
+		{ { 0xade682d1, 0x510e527f },
+		{ 0x2b3e6c1f, 0x9b05688c },
+		{ 0xfb41bd6b, 0x1f83d9ab },
+		{ 0x137e2179, 0x5be0cd19 } } };
+#else 
+	const ulonglong4 blake2b_IV[2] = {
+		{ 0x6a09e667f3bcc908,
+		0xbb67ae8584caa73b,
+		0x3c6ef372fe94f82b,
+		0xa54ff53a5f1d36f1 },
+		{ 0x510e527fade682d1,
+		0x9b05688c2b3e6c1f,
+		0x1f83d9abfb41bd6b,
+		0x5be0cd19137e2179 } };
+#endif
 
-	if (threadIdx.x == 0) {
-
-		((uint2_8*)blake2b_IV)[0] = {
-			{ 0xf3bcc908, 0x6a09e667 },
-			{ 0x84caa73b, 0xbb67ae85 },
-			{ 0xfe94f82b, 0x3c6ef372 },
-			{ 0x5f1d36f1, 0xa54ff53a },
-			{ 0xade682d1, 0x510e527f },
-			{ 0x2b3e6c1f, 0x9b05688c },
-			{ 0xfb41bd6b, 0x1f83d9ab },
-			{ 0x137e2179, 0x5be0cd19 }
-		};
-	}
 
 #if __CUDA_ARCH__ == 350
 	if (thread < threads)
@@ -503,8 +511,8 @@ void lyra2_gpu_hash_32_v3(uint32_t threads, uint32_t startNounce, uint2 *outputH
 		
 		state[1] = state[0];
 
-		state[2] = shuffle4(((vectype*)blake2b_IV)[0], 0); //for fun
-		state[3] = shuffle4(((vectype*)blake2b_IV)[1], 0);
+		state[2] = ((vectype*)blake2b_IV)[0];
+		state[3] = ((vectype*)blake2b_IV)[1];
 
 		for (int i = 0; i<24; i++) 
                 round_lyra_v35(state);  //because 12 is not enough
