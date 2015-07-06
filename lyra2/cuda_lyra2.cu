@@ -474,8 +474,6 @@ void lyra2_gpu_hash_32_v3(uint32_t threads, uint32_t startNounce, uint2 *outputH
 
 	vectype state[4];
 
-
-	uint28 blake2b_IV[2];
 #if __CUDA_ARCH__ > 350
 	const uint28 blake2b_IV[2] = {
 		{ { 0xf3bcc908, 0x6a09e667 },
