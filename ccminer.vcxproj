@@ -225,6 +225,8 @@
     </CudaLink>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <CudaCompile Include="Algo256\cuda_bmw256.cu" />
+    <CudaCompile Include="Algo256\cuda_cubehash256.cu" />
     <CudaCompile Include="bitcoin.cu">
       <FileType>CppCode</FileType>
     </CudaCompile>
@@ -360,6 +362,8 @@
     </CudaCompile>
     <CudaCompile Include="cuda_nist5.cu">
     </CudaCompile>
+    <CudaCompile Include="lyra2\cuda_lyra2v2.cu" />
+    <CudaCompile Include="lyra2\lyra2REv2.cu" />
     <CudaCompile Include="scrypt\blake.cu" />
     <CudaCompile Include="scrypt\keccak.cu" />
     <CudaCompile Include="scrypt\nv_kernel2.cu">

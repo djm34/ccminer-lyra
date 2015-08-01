@@ -225,21 +225,23 @@
     <ClCompile Include="compat\jansson\error.c">
       <Filter>Source Files\jansson</Filter>
     </ClCompile>
-    <ClCompile Include="lyra2\Lyra2.c">
-      <Filter>Source Files\sph</Filter>
-    </ClCompile>
-    <ClCompile Include="lyra2\Sponge.c">
-      <Filter>Source Files\sph</Filter>
-    </ClCompile>
     <ClCompile Include="scrypt-jane.cpp" />
     <ClCompile Include="scrypt.cpp" />
     <ClCompile Include="api.cpp">
       <Filter>Source Files\CUDA</Filter>
     </ClCompile>
-    <ClCompile Include="sph\neoscrypt.c" />
     <ClCompile Include="sph\sha256_Y.c" />
     <ClCompile Include="sph\yescrypt-opt.c" />
     <ClCompile Include="sph\yescryptcommon.c" />
+    <ClCompile Include="sph\neoscrypt.c">
+      <Filter>Source Files\CUDA\neoscrypt</Filter>
+    </ClCompile>
+    <ClCompile Include="lyra2\Lyra2.c">
+      <Filter>Source Files\CUDA\lyra</Filter>
+    </ClCompile>
+    <ClCompile Include="lyra2\Sponge.c">
+      <Filter>Source Files\CUDA\lyra</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="compat.h">
@@ -615,6 +617,18 @@
     </CudaCompile>
     <CudaCompile Include="scrypt\sha256.cu">
       <Filter>Source Files\CUDA\misc</Filter>
+    </CudaCompile>
+    <CudaCompile Include="Algo256\cuda_bmw256.cu">
+      <Filter>Source Files\CUDA\Algo256</Filter>
+    </CudaCompile>
+    <CudaCompile Include="Algo256\cuda_cubehash256.cu">
+      <Filter>Source Files\CUDA\Algo256</Filter>
+    </CudaCompile>
+    <CudaCompile Include="lyra2\cuda_lyra2v2.cu">
+      <Filter>Source Files\CUDA\lyra</Filter>
+    </CudaCompile>
+    <CudaCompile Include="lyra2\lyra2REv2.cu">
+      <Filter>Source Files\CUDA\lyra</Filter>
     </CudaCompile>
   </ItemGroup>
 </Project>

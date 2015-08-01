@@ -62,7 +62,7 @@ static __device__ __forceinline__ void round_lyra_v35(vectype* s)
 
 
 
-__device__ __forceinline__ void reduceDuplex(vectype state[4], uint32_t thread)
+static __device__ __forceinline__ void reduceDuplex(vectype state[4], uint32_t thread)
 {
 
 
@@ -92,7 +92,7 @@ __device__ __forceinline__ void reduceDuplex(vectype state[4], uint32_t thread)
 
 }
 
-__device__ __forceinline__ void reduceDuplexV3(vectype state[4], uint32_t thread)
+static __device__ __forceinline__ void reduceDuplexV3(vectype state[4], uint32_t thread)
 {
 
 
@@ -125,7 +125,7 @@ __device__ __forceinline__ void reduceDuplexV3(vectype state[4], uint32_t thread
 
 }
 
-__device__ __forceinline__ void reduceDuplexRowSetupV2(const int rowIn, const int rowInOut, const int rowOut, vectype state[4], uint32_t thread)
+static __device__ __forceinline__ void reduceDuplexRowSetupV2(const int rowIn, const int rowInOut, const int rowOut, vectype state[4], uint32_t thread)
 {
 
 
@@ -174,7 +174,7 @@ __device__ __forceinline__ void reduceDuplexRowSetupV2(const int rowIn, const in
 
 }
 
-__device__ __forceinline__ void reduceDuplexRowSetupV3(const int rowIn, const int rowInOut, const int rowOut, vectype state[4], uint32_t thread)
+static __device__ __forceinline__ void reduceDuplexRowSetupV3(const int rowIn, const int rowInOut, const int rowOut, vectype state[4], uint32_t thread)
 {
 
 
@@ -227,7 +227,7 @@ __device__ __forceinline__ void reduceDuplexRowSetupV3(const int rowIn, const in
 }
 
 
-__device__ __forceinline__ void reduceDuplexRowtV2(const int rowIn, const int rowInOut, const int rowOut, vectype* state, uint32_t thread)
+static __device__ __forceinline__ void reduceDuplexRowtV2(const int rowIn, const int rowInOut, const int rowOut, vectype* state, uint32_t thread)
 {
 
 		vectype state1[3],state2[3];
@@ -289,7 +289,7 @@ if (rowInOut != rowOut) {
 	}
 }
 
-__device__ __forceinline__ void reduceDuplexRowtV3(const int rowIn, const int rowInOut, const int rowOut, vectype* state, uint32_t thread)
+static __device__ __forceinline__ void reduceDuplexRowtV3(const int rowIn, const int rowInOut, const int rowOut, vectype* state, uint32_t thread)
 {
 
 	vectype state1[3], state2[3];
