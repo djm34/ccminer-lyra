@@ -2472,10 +2472,6 @@ static void signal_handler(int sig)
 BOOL WINAPI ConsoleHandler(DWORD dwType)
 {
 	switch (dwType) {
-	case CTRL_C_EVENT:
-		applog(LOG_INFO, "CTRL_C_EVENT received, exiting");
-		proper_exit(0);
-		break;
 	case CTRL_BREAK_EVENT:
 		applog(LOG_INFO, "CTRL_BREAK_EVENT received, exiting");
 		proper_exit(0);
