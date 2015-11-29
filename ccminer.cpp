@@ -156,7 +156,7 @@ static const char *algo_names[] = {
 	"x15",
 	"x17",
 	"neoscrypt",
-	"yesscrypt"
+	"yescrypt"
 };
 
 bool opt_debug = false;
