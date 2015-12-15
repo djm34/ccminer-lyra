@@ -144,6 +144,9 @@ AC_ARG_WITH([cuda],
 
 AC_ARG_WITH([nvml],
    [  --with-nvml=PATH    prefix where libnvml is installed [default=/usr/lib]])
+   
+AC_ARG_WITH([openssl],
+   [  --with-openssl=PATH     prefix where openssl is isntalled])
 
 AM_CONDITIONAL([HAVE_NVML], [test -n "$with_nvml"])
 
@@ -161,6 +164,11 @@ else
   CUDA_INCLUDES="-I/usr/local/cuda/include"
   CUDA_LIBS="-lcudart -static-libstdc++"
   CUDA_LDFLAGS="-L/usr/local/cuda/lib$SUFFIX"
+fi
+
+if test -n "$with_openssl"
+then
+  CUDA_INCLUDES="$CUDA_INCLUDES -I$with_openssl/include"
 fi
 
 if test -n "$with_nvml" ; then
