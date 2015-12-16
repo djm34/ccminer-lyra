@@ -451,6 +451,9 @@ static void affine_to_cpu_mask(int id, uint8_t mask) {
 	}
 	cpuset_setaffinity(CPU_LEVEL_WHICH, CPU_WHICH_TID, -1, sizeof(cpuset_t), &set);
 }
+#elif defined(__APPLE__)
+static inline void drop_policy(void) { }
+static void affine_to_cpu_mask(int id, uint8_t mask) {}
 #else /* Windows */
 static inline void drop_policy(void) { }
 static void affine_to_cpu_mask(int id, uint8_t mask) {
