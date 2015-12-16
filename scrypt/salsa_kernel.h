@@ -3,7 +3,11 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#ifdef __APPLE__
+#include <malloc/malloc.h>
+#else
 #include <malloc.h>
+#endif
 #include <string.h>
 #include <cuda_runtime.h>
 
