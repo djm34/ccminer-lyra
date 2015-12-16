@@ -131,11 +131,14 @@ AC_CONFIG_FILES([
 
 dnl find out what version we are running
 ARCH=`uname -m`
-if [[ $ARCH == "x86_64" ]];
+OS=`uname -s`
+SUFFIX=""
+if [[ $ARCH == "x86_64" && $OS != "Darwin" ]];
 then
   SUFFIX="64"
-else
-  SUFFIX=""
+elif [[ $OS == "Darwin" ]];
+then
+  CXXFLAGS="$CXXFLAGS -lc++"
 fi
 
 dnl Setup CUDA paths
